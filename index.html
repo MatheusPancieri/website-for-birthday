@@ -211,6 +211,30 @@
         transition: opacity .85s ease, transform .85s ease;
       }
       .fu.in { opacity: 1; transform: none; }
+
+      /* input de nome */
+      .name-input {
+        width: 100%;
+        padding: 13px 16px;
+        border: 1px solid rgba(201,168,76,.35);
+        background: #fff;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1rem;
+        font-style: italic;
+        color: var(--text);
+        outline: none;
+        text-align: center;
+        transition: border-color .3s;
+        margin-bottom: 14px;
+      }
+      .name-input::placeholder { color: var(--text-soft); }
+      .name-input:focus { border-color: rgba(201,168,76,.7); }
+      .name-input.erro { border-color: #c0392b; animation: shake .3s ease; }
+      @keyframes shake {
+        0%,100% { transform: translateX(0); }
+        25%      { transform: translateX(-6px); }
+        75%      { transform: translateX(6px); }
+      }
     </style>
   </head>
   <body>
@@ -440,6 +464,14 @@
           <p class="serif" style="font-size:1.05rem;color:var(--text);font-weight:600;font-style:italic;line-height:1.6;margin-bottom:20px;">
             Esperamos você para comemorar os 80 anos da Batica! ❤️
           </p>
+
+          <input
+            id="guest-name"
+            class="name-input"
+            type="text"
+            placeholder="Seu nome (ex: João e Maria)"
+            maxlength="60"
+          />
           <a href="#" onclick="confirmarPresenca();return false;" class="btn">
             Confirmar Presença
           </a>

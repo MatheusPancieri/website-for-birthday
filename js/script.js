@@ -104,13 +104,22 @@ window.addEventListener('load', () => {
 });
 
 // ── Confirmar presença via WhatsApp ──────────────────────────────────────────
-// ⚠️  Substitua pelo número correto (formato: 5567XXXXXXXXX)
-const WHATSAPP_NUMBER = '556792717373';
+const WHATSAPP_NUMBER = '556798130678';
 
 window.confirmarPresenca = function () {
+  const input = document.getElementById('guest-name');
+  const nome  = input ? input.value.trim() : '';
+
+  if (!nome) {
+    input.classList.add('erro');
+    input.focus();
+    setTimeout(() => input.classList.remove('erro'), 600);
+    return;
+  }
+
   const msg = encodeURIComponent(
-    'Olá! Confirmo minha presença na festa de 80 anos da Sebastiana Batica, ' +
-      'no dia 13 de junho de 2026 às 19h na Nativas Churrascaria! 🥂🎉',
+    `Olá! Confirmo a presença de ${nome} na festa de 80 anos da Batica, ` +
+    `no dia 13 de junho de 2026 às 19h na Nativas Churrascaria! 🥂🎉`,
   );
   window.open(
     `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${msg}`,
